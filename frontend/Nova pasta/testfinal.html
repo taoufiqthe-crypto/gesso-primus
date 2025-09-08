@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gesso Primus — Loja Online</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    <style>
+        /* CSS PRINCIPAL (Mover para styles.css) */
+        :root {
+            --primary-color: #e30613;
+            --secondary-color: #2e3192;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* --- HEADER (TOPO FIXO) --- */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Faixa superior de atendimento */
+        .topbar-info {
+            background-color: #2D552D; /* Cor verde da foto */
+            color: white;
+            font-size: 14px;
+            padding: 8px 15px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            gap: 20px;
+        }
+
+        .topbar-info i {
+            color: #e30613 !important; /* Mantém a cor do ícone */
+        }
+        
+        .topbar-info span.aberto { color: yellow; font-weight: bold; }
+        .topbar-info span.fechado { color: var(--primary-color); font-weight: bold; }
+
+        .topbar-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            /* Cor de fundo da foto */
+            background-color: #37A84B; 
+            color: white;
+        }
+        
+        /* Ajuste de cores para o topbar-main */
+        .topbar-main .logo, .topbar-main .cart i, .topbar-main .cart span {
+            color: white;
+        }
+        .topbar-main .brand strong {
+            color: white;
+        }
+        
+        /* --- CORREÇÃO DA BARRA DE BUSCA --- */
+        .search {
+            flex-grow: 1;
+            margin: 0 20px;
+            /* Estilo da caixa branca */
+            background-color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0 15px;
+            /* Usando Flexbox para alinhar os elementos dentro da caixa */
+            display: flex;
+            align-items: center;
+        }
+
+        .search input {
+            width: 100%;
+            /* Remove a borda e o fundo para que se misturem com a caixa */
+            border: none;
+            background: transparent;
+            padding: 10px 0;
+            outline: none;
+            color: #333;
+        }
+
+        .search input::placeholder {
+            color: #555;
+        }
+
+        .search button {
+            /* Remove a borda e o fundo para que se misturem com a caixa */
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 18px;
+            /* Mude a cor do ícone para o verde do topo */
+            color: #37A84B;
+        }
+        /* --- FIM DA CORREÇÃO --- */
+
+        .brand .logo {
+            font-size: 24px;
+            font-weight: 300;
+        }
+
+        .brand strong {
+            color: var(--primary-color);
+            font-weight: 900;
+        }
+
+        .cart {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart span {
+            font-size: 14px;
+        }
+
+        .cart a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 24px;
+            position: relative;
+        }
+
+        /* Cor do Menu alterada para o verde da foto */
+        .nav {
+            background-color: #2D552D;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: #f5f5f5;
+        }
+
+        /* --- HERO / BANNER --- */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('img/hero-bg.jpg') no-repeat center center/cover;
+            padding: 60px 0;
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 40px;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .cta {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover { background-color: #a8040c; }
+        .btn-outline:hover { background-color: var(--primary-color); color: white; }
+
+        .hero-media {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-media img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* --- SEÇÕES GENÉRICAS --- */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        /* --- CATEGORIAS --- */
+        .categorias .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .cat-card {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cat-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .cat-card span {
+            display: block;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        /* --- PRODUTOS --- */
+        .produtos .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .btn-sm {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-sm:hover { background-color: #a8040c; }
+
+        /* --- SOBRE A LOJA --- */
+        .sobre {
+            background-color: var(--light-bg);
+        }
+
+        .sobre-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .sobre-card h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .sobre-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .badges {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .badges li {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+
+        .badges i {
+            margin-right: 5px;
+        }
+
+        /* --- CONTATO --- */
+        .contato .container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .contato-info {
+            flex: 1;
+        }
+
+        .contato-info h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .contato-info p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .contato-mapa {
+            flex: 1;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .contato-mapa iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- RODAPÉ (FOOTER) --- */
+        .footer {
+            background-color: #25D366; /* Cor verde do WhatsApp, conforme o original */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* --- BOTÕES SOCIAIS FLUTUANTES --- */
+        .social-buttons {
+            position: fixed;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 9999;
+        }
+
+        .social-buttons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: white;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .social-buttons a:hover {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        /* Cores oficiais */
+        .whatsapp { background-color: #25D366; }
+        .facebook { background-color: #1877F2; }
+        .instagram {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+        .gmail { background-color: #D44638; }
+
+        /* --- RESPONSIVIDADE (MEDIA QUERIES) --- */
+        @media (max-width: 992px) {
+            .hero .container, .contato .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-media, .contato-mapa {
+                margin-top: 30px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            .topbar-main {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .search {
+                order: 3;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .social-buttons {
+                top: 60%;
+            }
+            .social-buttons a {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .topbar-info, .cart span {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="topbar-info">
+            <span><i class="fa-solid fa-headset" style="color:#e30613;"></i> Atendimento:
+                <span id="status-loja"></span>
+            </span>
+            <span class="info-item">
+                ☎️ Televendas: (62) 98423-0873 | (62) 99999-0000
+            </span>
+        </div>
+
+        <div class="topbar-main">
+            <div class="brand">
+                <span class="logo">GESSO <strong>PRIMUS</strong></span>
+            </div>
+
+            <form class="search" onsubmit="return false;">
+                <input type="search" placeholder="Busque por produtos (ex.: gesso, placa 60x60, moldura)" />
+                <button type="submit" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+
+            <div class="cart">
+                <i class="fa-solid fa-user"></i>
+                <span>Olá Seja Bem-Vindo (a)!</span>
+                <a href="#carrinho" aria-label="Carrinho"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <a href="#produtos">Produtos</a>
+            <a href="#contato">Contato</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Materiais de Gesso com preço de atacado</h1>
+                <p>Placas 60x60, molduras, ripado 3D, arame, rebite, sisal, gesso cola e muito mais.</p>
+                <div class="cta">
+                    <a href="#produtos" class="btn btn-primary">Ver produtos</a>
+                    <a href="https://wa.me/5562984230873" target="_blank" class="btn btn-outline">Fale no WhatsApp</a>
+                </div>
+            </div>
+            <div class="hero-media">
+                <img src="img/placa-60x60.jpg" alt="Placas de gesso 60x60" />
+            </div>
+        </div>
+    </section>
+
+    <section class="categorias container" id="categorias">
+        <h2 class="section-title">Categorias</h2>
+        <div class="grid grid-4">
+            <a class="cat-card" href="#produtos">
+                <img src="img/gesso-po.jpg" alt="Gesso em pó" />
+                <span>Gesso em Pó</span>
+            </a>
+            <a class="cat-card" href="#produtos">
+                <img src="img/placa-60x60.jpg" alt="Placa de gesso 60x60" />
+                <span>Placas 60x60</span>
+            </a>
+            <a class="cat-card" href="#produtos">
+                <img src="img/molduras.jpg" alt="Molduras de gesso" />
+                <span>Molduras & Tabicas</span>
+            </a>
+            <a class="cat-card" href="#produtos">
+                <img src="img/ripado-3d-1.jpg" alt="Ripado 3D de gesso" />
+                <span>Ripado 3D</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="produtos container" id="produtos">
+        <h2 class="section-title">Produtos em destaque</h2>
+        <div class="grid grid-4">
+            <div class="card">
+                <img src="img/placa-60x60.jpg" alt="Placa de gesso 60x60" />
+                <h3>Placa de Gesso 60x60</h3>
+                <p>Acabamento liso. Ideal para forros e ambientes internos.</p>
+                <div class="price-row"><span class="price">R$ 24,90</span><button class="btn-sm">Comprar</button></div>
+            </div>
+
+            <div class="card">
+                <img src="img/ripado-3d-1.jpg" alt="Painel ripado 3D" />
+                <h3>Ripado 3D — Modelo A</h3>
+                <p>Placas ripadas de gesso para paredes com efeito 3D.</p>
+                <div class="price-row"><span class="price">R$ 59,90</span><button class="btn-sm">Comprar</button></div>
+            </div>
+
+            <div class="card">
+                <img src="img/ripado-3d-2.jpg" alt="Painel ripado 3D" />
+                <h3>Ripado 3D — Modelo B</h3>
+                <p>Textura moderna, encaixe fácil e acabamento premium.</p>
+                <div class="price-row"><span class="price">R$ 69,90</span><button class="btn-sm">Comprar</button></div>
+            </div>
+
+            <div class="card">
+                <img src="img/molduras.jpg" alt="Molduras de gesso" />
+                <h3>Molduras (vários perfis)</h3>
+                <p>Perfis clássicos e modernos para valorizar o ambiente.</p>
+                <div class="price-row"><span class="price">R$ 19,90</span><button class="btn-sm">Comprar</button></div>
+            </div>
+
+            <div class="card">
+                <img src="img/gesso-po.jpg" alt="Saco de gesso em pó" />
+                <h3>Gesso em Pó</h3>
+                <p>Alta qualidade para moldagens, forros e reparos.</p>
+                <div class="price-row"><span class="price">R$ 34,90</span><button class="btn-sm">Comprar</button></div>
+            </div>
+
+            <div class="card">
+                <img src="img/gesso-cola.jpg" alt="Gesso cola" />
+                <h3>Gesso Cola</h3>
+                <p>Fixação rápida para placas, molduras e ripados.</p>
+                <div class="price-row"><span class="price">R$ 22,90</span><button class="btn-sm">Comprar</button></div>
+            </div>
+
+            <div class="card">
+                <img src="img/arame-galvanizado.jpg" alt="Arame galvanizado" />
+                <h3>Arame Galvanizado</h3>
+                <p>Resistente à corrosão. Rolo de 1kg.</p>
+                <div class="price-row"><span class="price">R$ 29,90</span><button class="btn-sm">Comprar</button></div>
+            </div>
+
+            <div class="card">
+                <img src="img/ribites.jpg" alt="Rebites" />
+                <h3>Rebites</h3>
+                <p>Fixadores para estruturas e acabamentos.</p>
+                <div class="price-row"><span class="price">R$ 14,90</span><button class="btn-sm">Comprar</button></div>
+            </div>
+
+            <div class="card">
+                <img src="img/sisal.jpg" alt="Sisal" />
+                <h3>Sisal</h3>
+                <p>Fibras naturais para reforço em peças de gesso.</p>
+                <div class="price-row"><span class="price">R$ 16,90</span><button class="btn-sm">Comprar</button></div>
+            </div>
+
+            <div class="card">
+                <img src="img/tabicas.jpg" alt="Tabicas" />
+                <h3>Tabicas</h3>
+                <p>Acabamento entre forro e parede com linha de sombra.</p>
+                <div class="price-row"><span class="price">R$ 12,90</span><button class="btn-sm">Comprar</button></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre container" id="sobre">
+        <div class="sobre-card">
+            <h2>Sobre a Gesso Primus</h2>
+            <p>Atendemos Aparecida de Goiânia e região com materiais de gesso de qualidade, pronta-entrega e preços competitivos. Emitimos NF-e (CNPJ) e oferecemos descontos à vista.</p>
+            <ul class="badges">
+                <li><i class="fa-solid fa-truck"></i> Entrega rápida</li>
+                <li><i class="fa-solid fa-badge-percent"></i> Desconto à vista</li>
+                <li><i class="fa-solid fa-shield"></i> Qualidade garantida</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="contato" id="contato">
+        <div class="container">
+            <div class="contato-info">
+                <h2>Fale com a gente</h2>
+                <p><strong>Endereço:</strong> Av. V-8, 08 - qd 09 lt 02 - Mansões Paraíso, Aparecida de Goiânia - GO, 74952-370</p>
+                <p><strong>Horário:</strong> Seg–Sáb 07:00–17:30 • Dom Fechado</p>
+                <p><strong>WhatsApp:</strong> <a href="https://wa.me/5562984230873" target="_blank">+55 62 98423-0873</a></p>
+            </div>
+            <div class="contato-mapa">
+                <iframe
+                    src="https://www.google.com/maps?q=Av.+V-8,+08+-+qd+09+lt+02+-+Mans%C3%B5es+Para%C3%ADso,+Aparecida+de+Goi%C3%A2nia+-+GO,+74952-370&output=embed"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© <span id="year"></span> Gesso Primus. Todos os direitos reservados.</p>
+            <p><strong>CNPJ:</strong> 00.000.000/0000-00</p>
+        </div>
+    </footer>
+
+    <div class="social-buttons">
+        <a href="https://wa.me/5562984230873" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com/gessoprimues" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/eaglesht" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:gessoprimus@gmail.com" target="_blank" class="gmail"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+
+    <script>
+        // Atualizar ano no rodapé
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function verificarHorario() {
+            const agora = new Date();
+            const dia = agora.getDay(); // 0 = Domingo, 6 = Sábado
+            const hora = agora.getHours();
+            const minuto = agora.getMinutes();
+
+            let aberto = false;
+
+            // Segunda a Sábado: 7h às 17h30
+            if (dia >= 1 && dia <= 6) {
+                if (hora > 7 && hora < 17) {
+                    aberto = true;
+                } else if (hora === 7 && minuto >= 0) {
+                    aberto = true;
+                } else if (hora === 17 && minuto <= 30) {
+                    aberto = true;
+                }
+            }
+
+            // Domingo fechado
+            if (dia === 0) {
+                aberto = false;
+            }
+
+            // Atualiza o HTML
+            const status = document.getElementById("status-loja");
+            if (aberto) {
+                status.innerHTML = 'Seg–Sáb, das 7h às 17h30 <span class="aberto">(Aberto agora)</span>';
+            } else {
+                status.innerHTML = 'Seg–Sáb, das 7h às 17h30 <span class="fechado">(Fechado)</span>';
+            }
+        }
+
+        verificarHorario(); // roda ao carregar
+        setInterval(verificarHorario, 60000); // atualiza a cada minuto
+    </script>
+</body>
+</html>

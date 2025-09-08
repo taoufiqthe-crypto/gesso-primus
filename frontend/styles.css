@@ -1,0 +1,107 @@
+/* Faixa superior (atendimento + telefones) */
+.topbar-info {
+  background: #1b5e20; /* verde escuro */
+  color: white;
+  font-size: 14px;
+  padding: 6px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.topbar-info i {
+  margin-right: 6px;
+}
+
+/* Faixa principal */
+.topbar-main {
+  background: #25D366; /* verde WhatsApp */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  flex-wrap: wrap;
+}
+
+/* Logo */
+.topbar-main .logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Busca */
+.topbar-main .search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+.topbar-main .search input {
+  padding: 8px 12px;
+  width: 60%;
+  border: none;
+  border-radius: 4px 0 0 4px;
+}
+.topbar-main .search button {
+  background: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  color: #25D366;
+}
+
+/* Carrinho */
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-weight: 500;
+}
+.cart i {
+  font-size: 20px;
+}
+.cart a {
+  color: white;
+  font-size: 24px;
+  margin-left: 6px;
+}
+
+/* Menu */
+.nav {
+  text-align: center;
+  background: #2e7d32;
+  padding: 8px 0;
+}
+.nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav a:hover {
+  text-decoration: underline;
+}
+.aberto {
+  color: #00ff7f; /* verde */
+  font-weight: bold;
+}
+
+.fechado {
+  color: #ff4d4d; /* vermelho */
+  font-weight: bold;
+}
+/* Estilo para a seção principal da página */
+.hero {
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('img/gesso-primus-loja.jpg') no-repeat center center/cover;
+  padding: 60px 0;
+}
+
+/* Adiciona um fundo branco para o conteúdo de texto */
+.hero-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  opacity: 0.9;
+}

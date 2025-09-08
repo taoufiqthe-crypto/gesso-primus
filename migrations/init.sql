@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS produtos (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  preco NUMERIC(10, 2) NOT NULL,
+  imagem TEXT
+);
+
+CREATE TABLE IF NOT EXISTS usuarios (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  senha_hash TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS pedidos (
+  id SERIAL PRIMARY KEY,
+  usuario_id INTEGER REFERENCES usuarios(id),
+  total NUMERIC(10, 2),
+  status VARCHAR(50),
+  criado_em TIMESTAMP DEFAULT NOW()
+);

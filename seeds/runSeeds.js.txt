@@ -1,0 +1,39 @@
+const { Sequelize, DataTypes } = require('sequelize');
+require('dotenv').config();
+
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  logging: false
+});
+
+const Usuario = sequelize.define('Usuario', {
+  nome: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  }
+});
+
+async function runSeeds() {
+  try {
+    await sequelize.authenticate();
+    console.log('✅ Conexão com banco de dados estabelecida.');
+
+    await Usuario.bulkCreate([
+      { nome: 'João Silva', email: 'joao@example.com' },
+      { nome: 'Maria Oliveira', email: 'maria@example.com' }
+    ]);
+
+    console.log('✅ Dados inseridos com sucesso.');
+    process.exit(0);
+  } catch (error) {
+    console.error('❌ Erro ao rodar seeds:', error);
+    process.exit(1);
+  }
+}
+
+runSeeds();
