@@ -370,6 +370,27 @@
         background-color: #a8040c;
       }
 
+      /* Estilo da nova seção do carrinho */
+      .carrinho {
+        margin-top: 50px;
+        padding: 20px;
+        background-color: var(--light-bg);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .carrinho-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .carrinho-item:last-child {
+        border-bottom: none;
+      }
+
       /* --- SOBRE A LOJA --- */
       .sobre {
         background-color: var(--light-bg);
@@ -657,106 +678,117 @@
     <section class="produtos container" id="produtos">
       <h2 class="section-title">Produtos em destaque</h2>
       <div class="grid grid-4">
-        <div class="card">
+        <div class="card" data-id="placa-gesso" data-nome="Placa de Gesso 60x60" data-valor="4.50">
           <img src="img/placa-60x60.jpg" alt="Placa de gesso 60x60" />
           <h3>Placa de Gesso 60x60</h3>
           <p>Acabamento liso. Ideal para forros e ambientes internos.</p>
           <div class="price-row">
             <span class="price">R$ 4,50</span>
-            <button class="btn-sm">Comprar</button>
+            <button class="btn-sm add-to-cart-btn">Adicionar ao Carrinho</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-id="ripado-a" data-nome="Ripado 3D - Modelo A" data-valor="59.90">
           <img src="img/ripado-3D.jpg" alt="Painel ripado 3D" />
           <h3>Ripado 3D — Modelo A</h3>
           <p>Placas ripadas de gesso para paredes com efeito 3D.</p>
           <div class="price-row">
             <span class="price">R$ 59,90</span>
-            <button class="btn-sm">Comprar</button>
+            <button class="btn-sm add-to-cart-btn">Adicionar ao Carrinho</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-id="ripado-b" data-nome="Ripado 3D - Modelo B" data-valor="69.90">
           <img src="img/ripado-3d-2.jpg" alt="Painel ripado 3D" />
           <h3>Ripado 3D — Modelo B</h3>
           <p>Textura moderna, encaixe fácil e acabamento premium.</p>
           <div class="price-row">
             <span class="price">R$ 69,90</span>
-            <button class="btn-sm">Comprar</button>
+            <button class="btn-sm add-to-cart-btn">Adicionar ao Carrinho</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-id="molduras" data-nome="Molduras" data-valor="2.90">
           <img src="img/molduras.jpg" alt="Molduras de gesso" />
           <h3>Molduras (vários perfis)</h3>
           <p>Perfis clássicos e modernos para valorizar o ambiente.</p>
           <div class="price-row">
             <span class="price">R$ 2,90</span>
-            <button class="btn-sm">Comprar</button>
+            <button class="btn-sm add-to-cart-btn">Adicionar ao Carrinho</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-id="gesso-po" data-nome="Gesso em Pó" data-valor="25.00">
           <img src="img/gesso-po.jpg" alt="Saco de gesso em pó" />
           <h3>Gesso em Pó</h3>
           <p>Alta qualidade para moldagens, forros e reparos.</p>
           <div class="price-row">
             <span class="price">R$ 25,00</span>
-            <button class="btn-sm">Comprar</button>
+            <button class="btn-sm add-to-cart-btn">Adicionar ao Carrinho</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-id="gesso-cola" data-nome="Gesso Cola" data-valor="12.00">
           <img src="img/gesso-cola.jpg" alt="Gesso cola" />
           <h3>Gesso Cola</h3>
           <p>Fixação rápida para placas, molduras e ripados.</p>
           <div class="price-row">
             <span class="price">R$ 12,00</span>
-            <button class="btn-sm">Comprar</button>
+            <button class="btn-sm add-to-cart-btn">Adicionar ao Carrinho</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-id="arame" data-nome="Arame Galvanizado" data-valor="35.00">
           <img src="img/arame-galvanizado.jpg" alt="Arame galvanizado" />
           <h3>Arame Galvanizado</h3>
           <p>Resistente à corrosão. Rolo de 1kg.</p>
           <div class="price-row">
             <span class="price">R$ 35,00</span>
-            <button class="btn-sm">Comprar</button>
+            <button class="btn-sm add-to-cart-btn">Adicionar ao Carrinho</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-id="rebites" data-nome="Rebites" data-valor="85.00">
           <img src="img/ribites.jpg" alt="Rebites" />
           <h3>Rebites</h3>
           <p>Fixadores para estruturas e acabamentos.</p>
           <div class="price-row">
             <span class="price">R$ 85,00</span>
-            <button class="btn-sm">Comprar</button>
+            <button class="btn-sm add-to-cart-btn">Adicionar ao Carrinho</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-id="sisal" data-nome="Sisal" data-valor="13.00">
           <img src="img/sisal.jpg" alt="Sisal" />
           <h3>Sisal</h3>
           <p>Fibras naturais para reforço em peças de gesso.</p>
           <div class="price-row">
             <span class="price">R$ 13,00</span>
-            <button class="btn-sm">Comprar</button>
+            <button class="btn-sm add-to-cart-btn">Adicionar ao Carrinho</button>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-id="tabicas" data-nome="Tabicas" data-valor="2.00">
           <img src="img/tabicas.jpg" alt="Tabicas" />
           <h3>Tabicas</h3>
           <p>Acabamento entre forro e parede com linha de sombra.</p>
           <div class="price-row">
             <span class="price">R$ 2,00</span>
-            <button class="btn-sm">Comprar</button>
+            <button class="btn-sm add-to-cart-btn">Adicionar ao Carrinho</button>
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="carrinho container" id="carrinho">
+        <h2 class="section-title">Seu Carrinho</h2>
+        <div id="carrinho-itens">
+            <p>Seu carrinho está vazio.</p>
+        </div>
+        <div id="carrinho-resumo" style="text-align: right; margin-top: 20px;">
+            <h3>Total: <span id="carrinho-total">R$ 0,00</span></h3>
+            <button id="checkoutBtn" class="btn btn-primary" style="display: none;">Finalizar Compra</button>
+        </div>
     </section>
 
     <section class="sobre container" id="sobre">
@@ -889,5 +921,6 @@
       verificarHorario(); // roda ao carregar
       setInterval(verificarHorario, 60000); // atualiza a cada minuto
     </script>
+    <script src="Checkout.js"></script>
   </body>
 </html>
